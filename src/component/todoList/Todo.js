@@ -23,7 +23,10 @@ const Todo = () => {
   const addItem = () => {
     if (!inputdata) {
       alert("plz fill the data");
-    } else if (inputdata && toggleButton) {
+    }
+
+    
+     else if (inputdata && toggleButton) {
       setItems(
         items.map((curElem) => {
           if (curElem.id === isEditItem) {
@@ -46,12 +49,12 @@ const Todo = () => {
     }
   };
 
-  //edit the items
+  //edit the items using id
   const editItem = (index) => {
-    const item_todo_edited = items.find((curElem) => {
+    const edit = items.find((curElem) => {
       return curElem.id === index;
     });
-    setInputData(item_todo_edited.name);
+    setInputData(edit.name);
     setIsEditItem(index);
     setToggleButton(true);
   };
@@ -69,7 +72,7 @@ const Todo = () => {
     setItems([]);
   };
 
-  // adding localStorage
+  // adding the  localStorage
   useEffect(() => {
     localStorage.setItem("mytodolist", JSON.stringify(items));
   }, [items]);
@@ -121,7 +124,7 @@ const Todo = () => {
               className="btn effect04"
               data-sm-link-text="Remove All"
               onClick={removeAll}>
-              <span> CHECK LIST</span>
+              <span><b>CHECK LIST</b></span>
             </button>
           </div>
         </div>
@@ -132,77 +135,3 @@ const Todo = () => {
 
 export default Todo;
 
-//  *******************************************
-
-// import React, { useState } from 'react'
-// import "./style.css";
-
-// const  Todo = () => {
-//   const  [inputData, setInputData]=useState("");
-//   const  [items,setItems]=useState([]);
-// // add items
-// const addItem=()=>{
-// if(!inputData)
-// {
-//   alert("plzz enter item....")
-// }
-// else
-// {
-//   const myNewInputData={
-
-//     id: new Date().getTime().toString(),
-//     name: inputData,
-
-//   };
-  
-//   setItems([...items,myNewInputData])
-//   setInputData("");
-// }
-// };
-
-
-//   return (
-//     <div className="main-div">
-//         <div className="child-div">
-//           <figure>
-//             <img src="/images/todo.svg.svg"alt="todo" />
-//             <figcaption><u>Please create list of things.</u></figcaption>
-//           </figure>
-//           <div className="addItems">
-//             <input type="text"
-//              placeholder="✍ Add items" 
-//              className="form-control" 
-//              value={ inputData}
-//              onChange={(event)=>setInputData(event.target.value)}
-//              />
-//             <i className="fa fa-plus add-btn" onClick={addItem}></i>
-//           </div>
-//           {/* show item */}
-//           <div className="showItem">
-            
-//              { items.map((curElem,index)=>
-//              {
-//                return(
-//                 <div className="eachItem" key={index}>
-//                 <h3>{curElem}</h3>
-//                 <div className="todo-btn">
-//                 <i className="far fa-edit add-btn" ></i>
-//                 <i className="far fa-trash-alt add-btn"></i>
-//                 </div>
-//               </div>
-//                );
-//              })};
-//          </div>
-
-//           {/* delete item */}
-//           <div className="showItem">
-//               <button className="btn effect04" data-sm-link-text="Remove All">
-//                 <span>CHECK LIST</span>
-//               </button>
-//           </div>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default  Todo;
