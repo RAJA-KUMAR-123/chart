@@ -7,6 +7,7 @@ function App() {
      <Todo/>
     </>
   );
+  
 }
 
 export default App;
